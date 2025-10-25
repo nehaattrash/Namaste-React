@@ -1,0 +1,97 @@
+● What is Emmet?
+ -->Emmet is the essential toolkit for web-developers. It allows you to type shortcuts that are then
+  expanded into full-fledged boiler plate code for writing HTML and CSS..
+
+● Difference between a Library and Framework?
+-->A key difference between the two is Inversion of control. When
+using a library, the control remains with the developer who
+tells the application when to call library functions. When
+using a framework, the control is reversed, which means that
+the framework tells the developer where code needs to be
+provided and calls it as it requires.
+
+● What is CDN? Why do we use it?
+--> CDN stands for Content Delivery Network. It is a network that helps to speed up web page loading for web users.
+ It is spread all over the world as usage of the internet is everywhere. It is basically a distributed system of servers
+ that stores the data by the use of Amazon Web services or Google Cloud storage and it serves that data to the user via 
+ the nearest server so that the loading or buffering of web pages is low.
+
+ How CDN works ?
+The CDN is a collection of servers or a network of all the servers that deliver data all over the world to the web user. 
+It has three main components, each component has its own value and role to play.
+
+1- The first one is the Origin server which stores all the data spread all over the world. It is the main server that handles every delivery and also it maintains the updated version of data.
+2- The second one is the Edge server which stores temporary data means it stores a copy of the original data temporarily. also, It is the one that delivers the data to the web user. The number of Edge servers is many, the nearest Edge servers deliver the data to the web user so that there should not be any delay in between the loading of the page on the web.
+3- The third one is a DNS server that keeps track of the IP addresses. whenever a user sends a request through the internet on the web browser then in response to that request the Origin Server gives the IP address. By accessing that IP address the user gets their data on the web.
+
+Why is CDN important ?
+CDN's primary purpose is to reduce the latency and reduce the delay between the communication of request and response through the internet.
+
+CDN provides the fastest delivery of data across the network and protects the data from DDoS attacks. It improves the efficiency of the communication
+between the client and the server. It reduces bandwidth consumption, provides security, the fastest delivery of data, and improves the customer experience.
+
+● Why is React known as React?
+--> React is a JavaScript Library. The name ‘React’ was chosen
+because the library was designed to allow developers to react
+to changes in state and data within an application, and to
+update the user interface in a declarative and efficient
+manner.
+
+● What is crossorigin in script tag?
+--> The crossorigin attribute in the script tag enables Cross-
+Origin Resource Sharing (CORS) for loading external JavaScript
+files from different origin than the hosting web page. This
+allows the script to access resources from the server hosting
+the script, such as making HTTP requests or accessing data.
+
+● What is diference between React and ReactDOM
+-->
+Feature                   React                                                 React DOM
+
+Definition       A JavaScript library for building user interfaces         A package in React that helps React interact with the browser’s DOM
+
+Purpose          Responsible for building and managing UI components       Handles the rendering and updating of UI components in the DOM
+
+Role             Creates reusable UI components and manages their state    Renders React components to the DOM and updates them when the state changes
+
+Primary Function Focuses on defining the structure and behavior of UI      Focuses on updating the DOM based on React's virtual DOM
+
+Environment      Can be used for web, mobile, and other platforms          Specifically used for web applications, integrating with the browser
+
+Dependeny         React is the core library for building UI                React DOM is used in conjunction with React to render components in web browsers
+
+
+● What is difference between react.development.js and react.production.js files via CDN?
+--> 
+1. react.development.js (Development Mode):
+Purpose: This version is intended for use during the development phase of a React application.
+Features: It includes extensive debugging tools, detailed error messages, and helpful warnings in the console. 
+File Size & Performance: Due to the inclusion of debugging utilities and verbose output, this file is larger and may have a slightly slower 
+performance compared to the production version. It is not optimized for minimal size or speed.
+
+2. react.production.js (Production Mode):
+Purpose: This version is designed for deploying a React application to a production environment.
+Features: It is highly optimized for performance and reduced file size. Development-specific code, warnings, and error messages are stripped out. The code is often minified and compressed to minimize load times.
+File Size & Performance: This file is significantly smaller and offers superior performance, making it suitable for live applications where speed and efficiency are crucial. Debugging information is suppressed to prevent sensitive details from being exposed to users.
+
+In essence :-
+Development: Use react.development.js for building and debugging your application.
+Production: Switch to react.production.js when deploying your application to ensure optimal performance and a smaller footprint for end-users.
+Modern build tools typically handle this switch automatically based on the environment.
+
+
+● What is async and defer? 
+  --> async - Meanwhile the HTML parsing is going on, any of the script with async tag are fetched from the network asynchronously
+  along with the HTML parsing. As soon as the script is fetched and made available to the browser the html parsing stops and scripts are executed
+  then and there. And once the script is executed then HTML parsing continues as regular.
+
+  defer - In this case , the HTML parsing continues to go on and the script are fetched in parallel. And these script are executed only
+  when the HTML parsing completes.
+
+ Async attribute doesnot guarantee the order of execution of script but defer does.
+ What does it mean?
+
+  In case of async if we have multiple script tag using async attribute and dependent on each other . Then async doesnot guarantee execution in A
+  particular order and that may break our code.
+
+  Defer is always preferred .
