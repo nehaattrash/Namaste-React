@@ -1,0 +1,27 @@
+● What is JSX?
+--> 1) JSX is HTML-like or XML-like syntax. 
+    2) JSX stands for JavaScriptXML. 
+    3) It's a syntax extension for JavaScript.
+    4)It is not a part of React. React apps can be built even without JSX but the code will become very hard to read.
+    5)It is not HTML inside JavaScript.
+    6)JavaScript engine cannot understand JSX as it only understands ECMAScript
+    7) JSX (transpiled by Babel) ⇒ React.createElement ⇒ ReactElement ⇒ JS Object ⇒ HTML Element(render) 
+
+● Superpowers of JSX
+--> 1)JSX helps us keep our code simpler and elegant when writing large pieces of code.
+    2)JSX also allows React to show more useful error and warning messages.
+    3)If one is familiar with HTML, it is quite easy to use JSX when building React application
+    4)Faster than normal JavaScript as it performs optimizations while translating to regular JavaScript.
+
+● Role of type attribute in script tag? What options can I use there?
+--> The type attribute specifies the type of the script. The type attribute identifies the content between
+    the <script> and </script> tags.
+    Options that can use used there :-
+    1) "text/javascript": This is the default and most common value, indicating that the script is written in JavaScript
+    2) text/ecmascript: Another MIME type for ECMAScript, which JavaScript is based on.
+    3)module: This value is used to indicate that the script is an ECMAScript module, allowing for features like import and export.
+
+● {TitleComponent} vs {<TitleComponent/>} vs
+{<TitleComponent></TitleComponent>} in JSX
+--> Above all the syntax are same they are used to render the functional component which here is TitleComponent.
+    This is the syntax that Babel understands.
