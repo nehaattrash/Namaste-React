@@ -1,0 +1,107 @@
+Assignment
+● Is JSX mandatory for React?
+--> JSX is not mandatory for React. While it is widely used and recommended for its benefits,
+    you can write React applications using only plain JavaScript.
+
+● Is ES6 mandatory for React?
+--> ES6 (ECMAScript 2015) is not strictly mandatory for using React, but it is highly recommended 
+    and widely adopted within the React ecosystem.
+
+● {TitleComponent} vs {<TitleComponent/>} vs
+{<TitleComponent></TitleComponent>} in JSX
+--> Above all the syntax are same they are used to render the functional component which here is TitleComponent.
+    This is the syntax that Babel understands.
+
+● How can I write comments in JSX?
+--> 1) Enclose the comment in curly braces {}: This signals to JSX that the content inside is JavaScript.
+    2) Use JavaScript's multi-line comment syntax /* ... */ within the curly braces: This is the actual comment format.
+    3) {/* .. */}
+
+● What is <React.Fragment></React.Fragment> and <></> ?
+--> <React.Fragment></React.Fragment> and <></> both represent React Fragments, 
+    which are a feature in React that allows you to group multiple elements returned 
+    by a component's render method without adding an extra node to the DOM
+    Example :-
+    
+    import React from 'react';
+
+    function MyComponent() {
+      return (
+        <React.Fragment>
+          <p>First element</p>
+          <p>Second element</p>
+        </React.Fragment>
+      );
+    }
+
+● What is Virtual DOM?
+--> 1) React virtual dom is basically the js object which is a ReactElement. 
+    2) Remember, when we write the React.createElement(h1,{},”Hi”); It creates a ReactElement 
+       and this React Element at the end of day is a Js Object .And this object is virtual dom .The object keeps virtual dom with itself.
+    3) Virtual Dom is basically representation of actual DOM.
+
+● What is Reconciliation in React?
+--> Reconciliation in React is the process by which React efficiently updates the actual Document Object Model (DOM)
+    to reflect changes in a component's state or props. It is a core mechanism that enables React's performance optimizations in handling UI updates.
+    How it works:
+    1) Virtual DOM Comparison:
+       When a component's state or props change, React creates a new Virtual DOM tree representing the updated UI. It then compares this new Virtual DOM tree with the previous Virtual DOM tree.
+    2) Diffing Algorithm:
+       React's "diffing" algorithm analyzes the differences between the two Virtual DOM trees. This algorithm aims to identify the minimal set of changes required to update the actual DOM.
+    3) Minimal DOM Updates:
+       Based on the identified differences, React calculates the most efficient way to apply these changes to the real DOM. Instead of re-rendering the entire UI, it only updates the specific parts of the DOM that have changed, added, or been removed. This minimizes costly DOM manipulations, leading to improved performance.
+
+● What is React Fiber?
+--> Definition : 
+    React Fiber is a complete reimplementation of React's core reconciliation algorithm, introduced in React 16.
+    Its primary purpose is to enhance rendering performance and enable smoother user experiences, especially in 
+    complex applications with animations, layouts, and gestures. 
+
+    Key Features and Concepts:
+    1) Incremental Rendering:
+       Fiber breaks down the rendering work into smaller units, allowing React to pause and resume work as needed. 
+       This prevents long-running tasks from blocking the main thread and ensures a more responsive UI.
+    2) Prioritization:
+       Fiber enables React to prioritize updates based on their urgency. 
+       For instance, user interactions like clicks or input changes receive higher priority than
+       background data fetching or less critical updates.
+    3) Concurrency:
+       Fiber's architecture lays the groundwork for concurrent mode,allowing React to handle multiple updates 
+       simultaneously without blocking the main thread, leading to more fluid and interactive UIs.
+    4) Work-in-Progress Tree:
+       React Fiber utilizes two trees: the "current" tree representing what's currently rendered on the screen, 
+       and the "work-in-progress" tree where all updates and changes are applied. Once the work-in-progress tree is 
+       complete and consistent, React swaps pointers, making it the new current tree and updating the UI in a single, atomic operation.
+    5) Fiber Nodes:
+       Each React element corresponds to a Fiber node, which is a plain JavaScript object representing a unit of work.
+       These nodes contain information about the element's type, state, props, and pointers to its parent, child, and sibling 
+       Fiber nodes, forming a linked list structure that facilitates efficient traversal and reconciliation. 
+
+● Why we need keys in React? When do we need keys in React?
+--> Why ?
+    Keys in React are special string attributes that help React identify which items in a list have changed, 
+    are added, or are removed.They are crucial for efficient list rendering and maintaining component state.
+    When ?
+    Keys are primarily needed when rendering lists of elements or components using methods like map(), 
+    filter(), or other iterative approaches that create multiple sibling elements.(ie elements at same level)
+
+● Can we use index as keys in React?
+--> No we should not use index as keys in React (it is not recommended).
+    Reason :-
+    Array indices are not stable identifiers. If the order of items in the list changes
+    (due to sorting, filtering, adding, or removing items), the indices will shift, causing React to lose track of component identities. 
+
+● What is props in React? Ways to
+--> 1) Props is a short form of properties.
+    2) When we want to pass data dynamically to a component we can pass it as props.
+    3) A functional component is basically a js function returning jsx. So, props can be though of as the 
+       the arguments to a function .
+       example = <Restaurant name="KFC" place="CP">
+       here name and place are the props passed to Restaurant component.
+
+● What is a Config Driven UI ?
+--> Our websites are driven by data and this is known as config driven Ui.
+A config-driven UI is a user interface that defines its structure, layout, and 
+behavior through external configuration files (like JSON or YAML) instead of hardcoding them directly into the application's codebase.
+This design pattern separates UI logic from the code, allowing developers to modify the UI's appearance and functionality by simply updating
+the configuration data, which makes the interface more flexible, scalable, and easier to customize without requiring changes to the underlying code
