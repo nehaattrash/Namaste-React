@@ -1,0 +1,71 @@
+● What is the difference between Named Export, Default export and * as export?
+
+--> In JavaScript modules, named exports and default exports are two distinct mechanisms for making values available for use in other modules.
+1) Named Exports:
+--> Purpose: To export multiple specific values from a module.
+--> Syntax: Use the export keyword followed by the declaration of the variable, function, or class.
+// module.js
+    export const PI = 3.14;
+    export function add(a, b) {
+        return a + b;
+    }
+Importing: Requires importing the specific names enclosed in curly braces, matching the exported names.
+// main.js
+    import { PI, add } from './module.js';
+    console.log(PI); // 3.14
+    console.log(add(2, 3)); // 5
+--> Allows multiple exports per module.
+
+2) Default Exports:
+--> Purpose: To export a single, primary value from a module.
+--> Syntax: Use export default followed by the value to be exported (which can be a variable, function, class, or object).
+    // module.js
+    const greeting = "Hello, World!";
+    export default greeting;
+
+    // Or directly:
+    // export default function sayHello() {
+    //     console.log("Hello!");
+    // }
+Importing: Does not require curly braces and allows assigning any local name to the imported value.
+    // main.js
+    import myGreeting from './module.js';
+    console.log(myGreeting); // Hello, World!
+--> Only one default export is allowed per module.
+
+3) * in export 
+In React, the * symbol used with export signifies a re-export of all named exports from another module. This is a shorthand for exporting multiple items without explicitly listing each one.
+Example:
+Consider a file named utils.js with several named exports:
+// utils.js
+export const add = (a, b) => a + b;
+export const subtract = (a, b) => a - b;
+export const multiply = (a, b) => a * b;
+
+If you want to re-export all of these from another file, say index.js, you can use the * syntax:
+
+// index.js
+export * from './utils.js'; 
+Now, any file importing from index.js will have access to add, subtract, and multiply as if they were directly exported from index.js.
+
+● What is the importance of config.js file
+--> Config.js file is basically constants.js file in our project .
+    It is used to store all the hardcoded values used in our project . Since these values can be used at 
+    multiple places in our project , so instead of writing that hardcoded value again and again (not good practice)
+     we store it in constants.js.
+
+● What are React Hooks?
+--> React Hooks are normal Javascript functions . These are the utility function given to us by React.
+    React Hooks are pre-built functions have underlying logic and these functions are written by the facebook developers.
+    When we install React using npm we gain access to this superpower. Two most popular hooks are :-
+    1) useState
+    2) useEffect
+    In order to use hooks in our project we have to import it from "react" (and it is a named import)
+    import {useState} from "react";
+
+● Why do we need a useState Hook?
+--> useState hooks are used to create superpowerful state variables. React keeps track of these state variables.
+    And whenever there is a change in the state variable , React triggers the reconciliation process and re-renders the Component.
+    State variables are used to keep Ui layer in sync with the data layer.
+    Syntax :-
+    const [listOfStudents, setStudents] = useState([]);

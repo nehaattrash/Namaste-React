@@ -1,7 +1,4 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-
-const resList = [
+export const resList = [
                   {
                     "info": {
                       "id": "16865",
@@ -1061,56 +1058,3 @@ const resList = [
                       "type": "WEBLINK"
                     }
                   }];
-const Header = () => {
-    return (
-        <div className="header">
-            <div >
-                <img className="logo" src="https://e7.pngegg.com/pngimages/815/847/png-clipart-take-out-android-sindelantal-app-food-text.png"/>
-            </div>
-            <div  className="nav-items">
-                <ul>
-                    <li>Home</li>
-                    <li>About</li>
-                    <li>Contact Us</li>
-                    <li>Cart</li>
-                </ul>
-            </div>
-        </div>
-    );
-};
-
-const RestaurantCard = (props)=>{
-    const {resData} = props;
-    const {cloudinaryImageId,name,cuisines,avgRating} = resData?.info;
-    const {deliveryTime} = resData?.info?.sla;
-    return (
-        <div className="res-card" style={{backgroundColor:"#f0f0f0"}}>
-            <img className="res-card-logo" src={"https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/"+cloudinaryImageId}/>
-           <h4>{name}</h4> 
-           <h4>{cuisines.join(", ")}</h4>
-           <h4>{avgRating} stars</h4>
-           <h4>{deliveryTime} mins</h4>
-        </div>
-    );
-};
-const Body =()=>{
-    return (
-        <div>
-            <div className="search-bar">Search</div>
-            <div className="res-container">
-               {resList.map((res)=><RestaurantCard key={res.info.id} resData={res}/>)}
-            </div>
-        </div>
-    );
-};
-const AppLayout = () =>{
-    return (
-        <div className="container">
-            <Header/>
-            <Body/>
-        </div>
-    );
-};
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<AppLayout/>);
