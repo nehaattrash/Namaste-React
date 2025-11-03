@@ -4,6 +4,7 @@ import Header from "./components/Header";
 import Body from "./components/Body";
 
 const AppLayout = () =>{
+    console.log("App Layout is rendered")
     return (
         <div className="container">
             <Header/>
