@@ -1,6 +1,7 @@
 import RestaurantCard from "./RestaurantCard";
 import {useState,useEffect} from "react";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 const Body =()=>{
     const [listOfRestaurants,setListOfRestaurants] = useState([]);
     const [searchText,setSearchText] = useState("");
@@ -11,13 +12,14 @@ const Body =()=>{
     },[]);
 
     const fetchData = async ()=>{
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6304203&lng=77.21772159999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+      //  const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6304203&lng=77.21772159999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
         // const data = await fetch("http://localhost:9090/courses");
+        const data = await fetch("https://namastedev.com/api/v1/listRestaurants");
         const json = await data.json();
 
-        console.log(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
-        setListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
-        setOriginalListOfRestaurants(json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        //console.log(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
+        setListOfRestaurants(json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
+        setOriginalListOfRestaurants(json?.data?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants);
     };
     console.log("Body Rendered");
 
@@ -36,7 +38,7 @@ const Body =()=>{
                setListOfRestaurants(filteredList);
             }}>Top Rated Restaurant</button>
             <div className="res-container">
-               {listOfRestaurants.map((res)=><RestaurantCard key={res.info.id} resData={res}/>)}
+               {listOfRestaurants.map((res)=><Link key={res.info.id} to={"restaurant/"+res.info.id}> <RestaurantCard resData={res}/> </Link>)}
             </div>
         </div>
     );
