@@ -3,3 +3,5 @@
 ● How will useEffect behave if we don't add a dependency array ?
 ● What is SPA?
 ● What is difference between Client Side Routing and Server Side Routing?
+
+Refer to the notes by Akshay Saini
