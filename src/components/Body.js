@@ -1,8 +1,9 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withLabelPromoted } from "./RestaurantCard";
 import {useState,useEffect} from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { API_URL } from "../utils/constants";
 const Body =()=>{
     const [listOfRestaurants,setListOfRestaurants] = useState([]);
     const [searchText,setSearchText] = useState("");
@@ -11,11 +12,12 @@ const Body =()=>{
         console.log("Body UseEffect called!");
         fetchData();
     },[]);
-
+    const RestaurantWithPromotedLabel = withLabelPromoted(RestaurantCard);
+    const promoted = "PROMOTED";
     const fetchData = async ()=>{
-      //  const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6304203&lng=77.21772159999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+      // const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6304203&lng=77.21772159999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
         // const data = await fetch("http://localhost:9090/courses");
-        const data = await fetch("https://namastedev.com/api/v1/listRestaurants");
+       const data = await fetch("https://namastedev.com/api/v1/listRestaurants");
         const json = await data.json();
 
         //console.log(json.data.cards[1].card.card.gridElements.infoWithStyle.restaurants);
@@ -29,20 +31,22 @@ const Body =()=>{
 
     return listOfRestaurants.length === 0 ? <Shimmer/> :(
         <div>
-            <input type="text" value={searchText} onChange={(e)=>{
+            <input className="m-1 p-1 border border-solid border-black" type="text" value={searchText} onChange={(e)=>{
                 console.log(searchText);
                 setSearchText(e.target.value);
             }}/>
-            <button onClick={()=>{
+            <button className="m-4 px-4 py-1.5 bg-green-100 rounded-lg" onClick={()=>{
                 const filteredList = searchText === "" ? originalListOfRestaurants: originalListOfRestaurants.filter((res)=>res.info.name.toLowerCase().includes(searchText.toLowerCase()));
                 setListOfRestaurants(filteredList);
             }}>Search</button>
-            <button className="filter-btn" onClick={()=>{
+            <button className="px-4 py-2 bg-gray-100 rounded-lg" onClick={()=>{
                let filteredList = listOfRestaurants.filter(res=>res.info.avgRating > 4);
                setListOfRestaurants(filteredList);
             }}>Top Rated Restaurant</button>
-            <div className="res-container">
-               {listOfRestaurants.map((res)=><Link key={res.info.id} to={"restaurant/"+res.info.id}> <RestaurantCard resData={res}/> </Link>)}
+            <div className="flex flex-wrap">
+               {listOfRestaurants.map((res)=><Link key={res.info.id} to={"restaurant/"+res.info.id}> 
+               {res.info.avgRating > 4 ? <RestaurantWithPromotedLabel resData={res}/> :  <RestaurantCard  resData={res}/> }
+               </Link>)}
             </div>
         </div>
     );

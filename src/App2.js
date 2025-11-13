@@ -8,6 +8,7 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Shimmer from "./components/Shimmer";
+import { API_URL } from "./utils/constants";
 //import Grocery from "./components/Grocery";
 
 const Grocery = lazy(()=>import("./components/Grocery"));
