@@ -1,4 +1,4 @@
-import React, { lazy , Suspense } from "react";
+import React, { lazy , Suspense, useState,useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -10,16 +10,29 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import Shimmer from "./components/Shimmer";
 import { API_URL } from "./utils/constants";
 //import Grocery from "./components/Grocery";
+import UserContext from "./utils/UserContext";
 
 const Grocery = lazy(()=>import("./components/Grocery"));
 const About = lazy(()=>import("./components/About"));
 const AppLayout = () =>{
-    console.log("App Layout is rendered")
+    console.log("App Layout is rendered");
+    const [userName, setUserName] = useState("");
+    useEffect(()=>{
+        //authentication api will be hit with username and password 
+        const data = {
+            name : "Neha Gupta"
+        }
+        setUserName(data.name);
+    },[])
     return (
-        <div className="container">
-            <Header/>
-            <Outlet/>
-        </div>
+        <UserContext.Provider value={{loggedInUser:userName , setUserName}}>
+            <div className="container">
+                {/* <UserContext.Provider value={{loggedInUser:"Elon Musk"}}> */}
+                <Header/>
+                {/* </UserContext.Provider>                 */}
+                <Outlet/>
+            </div>
+        </UserContext.Provider>
     );
 };
 

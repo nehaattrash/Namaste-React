@@ -1,13 +1,15 @@
 import RestaurantCard, { withLabelPromoted } from "./RestaurantCard";
-import {useState,useEffect} from "react";
+import {useState,useEffect,useContext} from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
-import { API_URL } from "../utils/constants";
+import UserContext from "../utils/UserContext";
+
 const Body =()=>{
     const [listOfRestaurants,setListOfRestaurants] = useState([]);
     const [searchText,setSearchText] = useState("");
     const [originalListOfRestaurants,setOriginalListOfRestaurants] = useState([]);
+   const {loggedInUser,setUserName} = useContext(UserContext);
     useEffect(()=>{
         console.log("Body UseEffect called!");
         fetchData();
@@ -43,6 +45,7 @@ const Body =()=>{
                let filteredList = listOfRestaurants.filter(res=>res.info.avgRating > 4);
                setListOfRestaurants(filteredList);
             }}>Top Rated Restaurant</button>
+             <input className="m-2 p-2 border border-black rounded-lg" value={loggedInUser} onChange={(e)=>setUserName(e.target.value)} />
             <div className="flex flex-wrap">
                {listOfRestaurants.map((res)=><Link key={res.info.id} to={"restaurant/"+res.info.id}> 
                {res.info.avgRating > 4 ? <RestaurantWithPromotedLabel resData={res}/> :  <RestaurantCard  resData={res}/> }
