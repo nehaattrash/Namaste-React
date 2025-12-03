@@ -1,7 +1,14 @@
 import { IMG_URL } from "../utils/constants";
+import {addItems} from "../utils/cartSlice";
+import { useDispatch } from "react-redux";
 const ItemCards = (props) =>{
     const {data} = props;
     console.log(props);
+    const dispatch = useDispatch();
+    const handleAddItems = (item) =>{
+        console.log("handleAddItems called");
+        dispatch(addItems(item));
+    }
     return (
         <div>
             {data.map((item)=>{
@@ -19,7 +26,7 @@ const ItemCards = (props) =>{
                         </div>
                         <div className="w-3/12 p-4 ">
                             <div className="absolute">
-                                <button className="p-2 mx-16 rounded-lg shadow-lg bg-white">
+                                <button className="p-2 mx-16 rounded-lg shadow-lg bg-white" onClick={()=>handleAddItems(item)}>
                                     Add+
                                 </button>
                             </div>
